@@ -2,18 +2,30 @@ package pwo.seq;
 
 import java.math.BigDecimal;
 
+/**
+ * Klasa implementująca generator Tribonacciego
+ */
 public class TribonacciGenerator extends FibonacciGenerator{
+    /**
+     * Domyślny konstruktor
+     */
     public TribonacciGenerator() {
         f_3 = new BigDecimal(0);
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void reset() {
         super.reset();
         f_3 = new BigDecimal(0);
     }
 
     @Override
+    /**
+     * {@inheritDoc}}
+     */
     public BigDecimal nextTerm() {
         if (lastIndex > 2) {
             current = f_1.add(f_2);

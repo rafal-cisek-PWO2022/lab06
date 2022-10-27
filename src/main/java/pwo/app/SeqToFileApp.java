@@ -3,11 +3,19 @@ package pwo.app;
 import pwo.seq.SeqType;
 import pwo.utils.SequenceTools;
 
+/**
+ * Klasa zapisująca wyniki obliczeń do pliku tekstowego
+ */
 public class SeqToFileApp {
     protected SeqType seqType;
     protected Integer from, to;
     protected String filename;
 
+    /**
+     * Metoda pobierająca argumenty
+     * @param args - argumenty z linii poleceń
+     * @return false - błędy w parsowaniu, true - brak błędów
+     */
     protected boolean getArgs(String[] args) {
         try {
             seqType = SeqType.fromString(args[0]);
@@ -26,10 +34,18 @@ public class SeqToFileApp {
         }
     }
 
+    /**
+     * Metoda zapisująca sekwencję do pliku
+     * @return true - bez błędów, false - błędy
+     */
     protected boolean writeSeq() {
         return SequenceTools.writeToFile(seqType.getGenerator(), from, to, filename);
     }
 
+    /**
+     * Metoda uruchamiająca część główną programu
+     * @param args - argumenty z linii poleceń
+     */
     public void run(String[] args) {
         System.out.println("Sequence to file CLI app");
         if (!getArgs(args)) {
